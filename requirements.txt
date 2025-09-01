@@ -1,0 +1,27 @@
+# Core dependencies
+torch>=1.9.0
+numpy>=1.19.0
+
+# Optional development dependencies
+# Install with: pip install -r requirements.txt -r requirements-dev.txt
+
+# For package building
+setuptools>=45
+wheel
+build
+
+# For testing (optional)
+# pytest>=6.0
+# pytest-cov>=2.0
+
+# For benchmarking (optional)
+# psutil>=5.8.0
+
+# For documentation (optional)
+# sphinx>=4.0
+# sphinx-rtd-theme>=1.0
+
+# For code formatting (optional)
+# black>=22.0
+# isort>=5.0
+# flake8>=4.0
