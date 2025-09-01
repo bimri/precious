@@ -7,7 +7,7 @@ The Precious package provides a minimal model showcasing three tokenizer-free ap
 
 ### From PyPI (Recommended)
 ```bash
-pip install precious
+pip install precious-nlp
 ```
 
 ### From Source (Development)
@@ -20,23 +20,25 @@ pip install -e .
 ### With Optional Dependencies
 ```bash
 # For development tools
-pip install precious[dev]
+pip install precious-nlp[dev]
 
 # For benchmarking
-pip install precious[benchmarks]
+pip install precious-nlp[benchmarks]
 
 # For documentation
-pip install precious[docs]
+pip install precious-nlp[docs]
 
 # All optional dependencies
-pip install precious[all]
+pip install precious-nlp[all]
 ```
 
 ## Usage
 Here is a basic example of how to use the PreciousModel:
 
 ```python
-from precious import PreciousModel, PreciousConfig
+# Import with hyphenated package name
+import precious_nlp as precious
+from precious_nlp import PreciousModel, PreciousConfig
 
 # Initialize the model with the desired configuration
 config = PreciousConfig(mode="byte", d_model=256)  # or "tfree", "canine"
@@ -61,22 +63,25 @@ print(f"Training loss: {loss.item()}")
 
 ### 1. Byte-Level Processing
 ```python
-config = PreciousConfig(mode="byte", d_model=256)
-model = PreciousModel(config)
+import precious_nlp as precious
+config = precious.PreciousConfig(mode="byte", d_model=256)
+model = precious.PreciousModel(config)
 # Processes text at byte level - universal and memory efficient
 ```
 
 ### 2. CANINE Approach
 ```python
-config = PreciousConfig(mode="canine", d_model=256)
-model = PreciousModel(config)
+import precious_nlp as precious
+config = precious.PreciousConfig(mode="canine", d_model=256)
+model = precious.PreciousModel(config)
 # Character-level processing with Unicode support
 ```
 
 ### 3. T-FREE Method
 ```python
-config = PreciousConfig(mode="tfree", d_model=256, tfree_vocab_v=8192)
-model = PreciousModel(config)
+import precious_nlp as precious
+config = precious.PreciousConfig(mode="tfree", d_model=256, tfree_vocab_v=8192)
+model = precious.PreciousModel(config)
 # Vocabulary-aware with character-level fallback
 ```
 

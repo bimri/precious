@@ -1,8 +1,8 @@
-# Precious Package API Reference
+# Precious-NLP Package API Reference
 
 ## Overview
 
-The Precious package provides three tokenizer-free approaches for natural language processing:
+The precious-nlp package provides three tokenizer-free approaches for natural language processing:
 
 - **T-FREE**: A custom tokenizer-free encoding approach with word-level and character-level representations
 - **CANINE**: Character-level processing with downsampling/upsampling mechanisms
@@ -11,11 +11,13 @@ The Precious package provides three tokenizer-free approaches for natural langua
 ## Quick Start
 
 ```python
-from precious import PreciousModel, PreciousConfig
+# Import with hyphenated package name
+import precious_nlp as precious
+from precious_nlp import PreciousModel, PreciousConfig
 
 # Create a model with T-FREE approach
-config = PreciousConfig(mode="tfree", d_model=256)
-model = PreciousModel(config)
+config = precious.PreciousConfig(mode="tfree", d_model=256)
+model = precious.PreciousModel(config)
 
 # Process text
 inputs = ["Hello world!", "This is a test."]
@@ -66,8 +68,10 @@ class PreciousConfig:
 #### Examples
 
 ```python
+import precious_nlp as precious
+
 # Small model for experimentation
-small_config = PreciousConfig(
+small_config = precious.PreciousConfig(
     mode="byte",
     d_model=128,
     n_heads=4,
@@ -75,7 +79,7 @@ small_config = PreciousConfig(
 )
 
 # Large model for production
-large_config = PreciousConfig(
+large_config = precious.PreciousConfig(
     mode="tfree",
     d_model=768,
     n_heads=12,
@@ -84,7 +88,7 @@ large_config = PreciousConfig(
 )
 
 # CANINE configuration
-canine_config = PreciousConfig(
+canine_config = precious.PreciousConfig(
     mode="canine",
     d_model=512,
     canine_B=32768,
@@ -113,8 +117,9 @@ Initialize the model with the given configuration.
 
 **Example:**
 ```python
-config = PreciousConfig(mode="byte", d_model=256)
-model = PreciousModel(config)
+import precious_nlp as precious
+config = precious.PreciousConfig(mode="byte", d_model=256)
+model = precious.PreciousModel(config)
 ```
 
 ##### `forward(inputs: List[str], targets: Optional[List[str]] = None) -> Dict[str, torch.Tensor]`
@@ -226,8 +231,9 @@ In byte mode, text is processed directly at the byte level using standard embedd
 
 **Example:**
 ```python
-config = PreciousConfig(mode="byte", d_model=256)
-model = PreciousModel(config)
+import precious_nlp as precious
+config = precious.PreciousConfig(mode="byte", d_model=256)
+model = precious.PreciousModel(config)
 
 # Each character is converted to its byte representation
 inputs = ["Hello 🌍"]  # Works with Unicode
@@ -256,13 +262,15 @@ class EVAAttention(nn.Module):
 ```python
 import torch
 from torch.optim import AdamW
-from precious import PreciousModel, PreciousConfig
+import precious_nlp as precious
+from precious_nlp import PreciousModel, PreciousConfig
 
 # Setup
 device = "cuda" if torch.cuda.is_available() else "cpu"
-config = PreciousConfig(mode="byte", d_model=256, n_layers=4)
-model = PreciousModel(config).to(device)
+config = precious.PreciousConfig(mode="byte", d_model=256, n_layers=4)
+model = precious.PreciousModel(config).to(device)
 optimizer = AdamW(model.parameters(), lr=1e-4)
+```
 
 # Training data
 train_inputs = ["This is input text", "Another example"]
@@ -388,8 +396,9 @@ except RuntimeError as e:
 # tokens = tokenizer(texts, return_tensors="pt")
 # outputs = model(**tokens)
 
-# Use Precious directly:
-model = PreciousModel(PreciousConfig(mode="byte"))
+# Use precious-nlp directly:
+import precious_nlp as precious
+model = precious.PreciousModel(precious.PreciousConfig(mode="byte"))
 outputs = model(texts)
 ```
 

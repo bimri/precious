@@ -27,7 +27,7 @@ def get_version():
     return "0.1.0"
 
 setup(
-    name="precious",
+    name="precious-nlp",
     version=get_version(),
     author="bimri",
     author_email="bimri@outlook.com",

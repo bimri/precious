@@ -1,4 +1,4 @@
-# Precious Package Examples and Tutorials
+# Precious-NLP Package Examples and Tutorials
 
 ## Table of Contents
 
@@ -16,13 +16,15 @@
 
 ```python
 # Install the package (when available on PyPI)
-# pip install precious
+# pip install precious-nlp
 
 # For development installation
 import sys
 sys.path.append('/path/to/precious')
 
-from precious import PreciousModel, PreciousConfig
+# Import with hyphenated package name
+import precious_nlp as precious
+from precious_nlp import PreciousModel, PreciousConfig
 import torch
 
 # Check device availability
@@ -34,14 +36,14 @@ print(f"Using device: {device}")
 
 ```python
 # Create a simple byte-level model
-config = PreciousConfig(
+config = precious.PreciousConfig(
     mode="byte",
     d_model=256,
     n_heads=8,
     n_layers=4
 )
 
-model = PreciousModel(config).to(device)
+model = precious.PreciousModel(config).to(device)
 print(f"Model parameters: {sum(p.numel() for p in model.parameters()):,}")
 
 # Test with simple input
@@ -57,7 +59,8 @@ print(f"Output shape: {outputs['logits'].shape}")
 ```python
 import torch
 import torch.nn as nn
-from precious import PreciousModel, PreciousConfig
+import precious_nlp as precious
+from precious_nlp import PreciousModel, PreciousConfig
 
 class PreciousClassifier(nn.Module):
     """Text classifier using Precious backbone"""
@@ -84,7 +87,7 @@ class PreciousClassifier(nn.Module):
         return self.classifier(pooled)
 
 # Usage
-config = PreciousConfig(mode="byte", d_model=256)
+config = precious.PreciousConfig(mode="byte", d_model=256)
 classifier = PreciousClassifier(config, num_classes=2)
 
 # Sample classification task
@@ -105,7 +108,7 @@ print(f"Predictions shape: {predictions.shape}")
 ```python
 def train_language_model():
     # Configuration for language modeling
-    config = PreciousConfig(
+    config = precious.PreciousConfig(
         mode="tfree",
         d_model=512,
         n_heads=8,
@@ -113,7 +116,7 @@ def train_language_model():
         tfree_vocab_v=16384
     )
     
-    model = PreciousModel(config).to(device)
+    model = precious.PreciousModel(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
     
     # Sample training data
@@ -182,8 +185,8 @@ def generate_text(model, prompt, max_length=50, temperature=1.0):
     return current_text
 
 # Example usage with byte model
-config = PreciousConfig(mode="byte", d_model=256, n_layers=4)
-gen_model = PreciousModel(config)
+config = precious.PreciousConfig(mode="byte", d_model=256, n_layers=4)
+gen_model = precious.PreciousModel(config)
 
 # Generate text (Note: this requires a trained model for good results)
 generated = generate_text(gen_model, "The future of AI is", max_length=30)
@@ -231,7 +234,7 @@ task_configs = {
     "spam": {"output_dim": 2}        # spam, not spam
 }
 
-config = PreciousConfig(mode="canine", d_model=384)
+config = precious.PreciousConfig(mode="canine", d_model=384)
 multi_model = MultiTaskPreciousModel(config, task_configs)
 
 # Training with multiple tasks
@@ -272,8 +275,8 @@ print(f"Total multi-task loss: {loss:.4f}")
 def curriculum_training():
     """Implement curriculum learning with increasing difficulty"""
     
-    config = PreciousConfig(mode="byte", d_model=256, n_layers=4)
-    model = PreciousModel(config).to(device)
+    config = precious.PreciousConfig(mode="byte", d_model=256, n_layers=4)
+    model = precious.PreciousModel(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=3)
     
@@ -360,9 +363,9 @@ def compare_modes():
     }
     
     configs = [
-        PreciousConfig(mode="tfree", **base_config, tfree_vocab_v=4096),
-        PreciousConfig(mode="canine", **base_config, canine_B=8192),
-        PreciousConfig(mode="byte", **base_config)
+        precious.PreciousConfig(mode="tfree", **base_config, tfree_vocab_v=4096),
+        precious.PreciousConfig(mode="canine", **base_config, canine_B=8192),
+        precious.PreciousConfig(mode="byte", **base_config)
     ]
     
     # Test texts with different characteristics
@@ -378,7 +381,7 @@ def compare_modes():
     for config in configs:
         print(f"\n=== Testing {config.mode.upper()} mode ===")
         
-        model = PreciousModel(config).to(device)
+        model = precious.PreciousModel(config).to(device)
         mode_results = {}
         
         # Count parameters
@@ -613,8 +616,8 @@ def prepare_dummy_data():
     return train_data, val_data
 
 # Setup and train
-config = PreciousConfig(mode="byte", d_model=256, n_layers=4)
-model = PreciousModel(config).to(device)
+config = precious.PreciousConfig(mode="byte", d_model=256, n_layers=4)
+model = precious.PreciousModel(config).to(device)
 
 train_data, val_data = prepare_dummy_data()
 
@@ -640,14 +643,14 @@ def memory_efficient_training():
     """Demonstrate memory optimization techniques"""
     
     # Use smaller model for memory efficiency
-    config = PreciousConfig(
+    config = precious.PreciousConfig(
         mode="byte",
         d_model=128,  # Smaller hidden size
         n_heads=4,    # Fewer attention heads
         n_layers=3    # Fewer layers
     )
     
-    model = PreciousModel(config).to(device)
+    model = precious.PreciousModel(config).to(device)
     
     # Enable gradient checkpointing if available
     if hasattr(model, 'gradient_checkpointing_enable'):
@@ -719,9 +722,9 @@ class DocumentSimilarity:
     
     def __init__(self, model_config=None):
         if model_config is None:
-            model_config = PreciousConfig(mode="byte", d_model=384, n_layers=6)
+            model_config = precious.PreciousConfig(mode="byte", d_model=384, n_layers=6)
         
-        self.model = PreciousModel(model_config).to(device)
+        self.model = precious.PreciousModel(model_config).to(device)
         self.model.eval()
     
     def get_document_embedding(self, text):
@@ -787,8 +790,8 @@ def multilingual_example():
     """Demonstrate multilingual capabilities"""
     
     # Byte mode handles any Unicode text
-    config = PreciousConfig(mode="byte", d_model=256, n_layers=4)
-    model = PreciousModel(config).to(device)
+    config = precious.PreciousConfig(mode="byte", d_model=256, n_layers=4)
+    model = precious.PreciousModel(config).to(device)
     
     # Multilingual test cases
     multilingual_texts = [
@@ -846,9 +849,9 @@ class RealTimeProcessor:
     
     def __init__(self, model_config=None, batch_size=4, max_wait_time=0.1):
         if model_config is None:
-            model_config = PreciousConfig(mode="byte", d_model=256, n_layers=3)
+            model_config = precious.PreciousConfig(mode="byte", d_model=256, n_layers=3)
         
-        self.model = PreciousModel(model_config).to(device)
+        self.model = precious.PreciousModel(model_config).to(device)
         self.model.eval()
         
         self.batch_size = batch_size

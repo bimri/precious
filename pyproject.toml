@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "wheel", "setuptools-scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "precious"
+name = "precious-nlp"
 version = "0.1.0"
 description = "A tokenizer-free NLP library with T-FREE, CANINE, and byte-level approaches"
 readme = "README.md"
@@ -65,9 +65,9 @@ all = [
 [project.urls]
 Homepage = "https://github.com/bimri/precious"
 Repository = "https://github.com/bimri/precious"
-Documentation = "https://github.com/bimri/precious/blob/main/docs/API_REFERENCE.md"
+Documentation = "https://github.com/bimri/precious/blob/master/docs/API_REFERENCE.md"
 "Bug Reports" = "https://github.com/bimri/precious/issues"
-Changelog = "https://github.com/bimri/precious/blob/main/CHANGELOG.md"
+Changelog = "https://github.com/bimri/precious/blob/master/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-01-27
 
 ### Added
-- Initial release of Precious tokenizer-free NLP library
+- Initial release of precious-nlp tokenizer-free NLP library
 - Three tokenizer-free approaches:
   - **T-FREE**: Vocabulary-aware approach with character-level fallback
   - **CANINE**: Character-level processing with Unicode support and downsampling/upsampling
