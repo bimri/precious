@@ -183,6 +183,16 @@ bandit-report.json
 .coverage*
 htmlcov/
 
+# Development and temporary files
+IMPLEMENTATION_SUMMARY.md
+GIT_SETUP_COMMANDS.md
+FIX_DEFAULT_BRANCH.md
+setup_git_repo.sh
+fix_branches.sh
+*_COMMANDS.md
+*_GUIDE.md
+temp_*.md
+
 # Temporary files
 temp/
 tmp/
