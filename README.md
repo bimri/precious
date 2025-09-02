@@ -117,9 +117,10 @@ model = precious.PreciousModel(config)
 
 ## Documentation
 
+For complete documentation, visit the [docs directory](docs/) or browse individual guides:
+
 - 📖 [API Reference](docs/API_REFERENCE.md) - Complete API documentation
 - 📝 [Examples](docs/EXAMPLES.md) - From basic to advanced usage
-- 🔧 [Implementation Details](docs/IMPLEMENTATION_SUMMARY.md) - Technical overview
 
 ## Requirements
 

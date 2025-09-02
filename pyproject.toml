@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "precious-nlp"
-version = "0.1.1"
+version = "0.1.2"
 description = "A tokenizer-free NLP library with T-FREE, CANINE, and byte-level approaches"
-readme = "README.md"
+readme = { file = "README.md", content-type = "text/markdown" }
 license = { text = "MIT" }
 authors = [{ name = "bimri", email = "bimri@outlook.com" }]
 maintainers = [{ name = "bimri", email = "bimri@outlook.com" }]

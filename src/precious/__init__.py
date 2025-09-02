@@ -14,7 +14,7 @@ Example usage:
     >>> outputs = model(["Hello, tokenizer-free world!"])
 """
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __author__ = "bimri"
 __email__ = "bimri@outlook.com"
 __license__ = "MIT"
