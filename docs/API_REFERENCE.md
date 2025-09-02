@@ -11,9 +11,9 @@ The precious-nlp package provides three tokenizer-free approaches for natural la
 ## Quick Start
 
 ```python
-# Import with hyphenated package name
-import precious_nlp as precious
-from precious_nlp import PreciousModel, PreciousConfig
+# Import the package (install as 'precious-nlp', import as 'precious')
+import precious
+from precious import PreciousModel, PreciousConfig
 
 # Create a model with T-FREE approach
 config = precious.PreciousConfig(mode="tfree", d_model=256)
@@ -68,7 +68,7 @@ class PreciousConfig:
 #### Examples
 
 ```python
-import precious_nlp as precious
+import precious
 
 # Small model for experimentation
 small_config = precious.PreciousConfig(
@@ -117,7 +117,7 @@ Initialize the model with the given configuration.
 
 **Example:**
 ```python
-import precious_nlp as precious
+import precious
 config = precious.PreciousConfig(mode="byte", d_model=256)
 model = precious.PreciousModel(config)
 ```
@@ -231,7 +231,7 @@ In byte mode, text is processed directly at the byte level using standard embedd
 
 **Example:**
 ```python
-import precious_nlp as precious
+import precious
 config = precious.PreciousConfig(mode="byte", d_model=256)
 model = precious.PreciousModel(config)
 
@@ -262,8 +262,8 @@ class EVAAttention(nn.Module):
 ```python
 import torch
 from torch.optim import AdamW
-import precious_nlp as precious
-from precious_nlp import PreciousModel, PreciousConfig
+import precious
+from precious import PreciousModel, PreciousConfig
 
 # Setup
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -397,7 +397,7 @@ except RuntimeError as e:
 # outputs = model(**tokens)
 
 # Use precious-nlp directly:
-import precious_nlp as precious
+import precious
 model = precious.PreciousModel(precious.PreciousConfig(mode="byte"))
 outputs = model(texts)
 ```

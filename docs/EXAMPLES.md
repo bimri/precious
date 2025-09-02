@@ -15,16 +15,17 @@
 ### Installation and Basic Setup
 
 ```python
-# Install the package (when available on PyPI)
+# Install the package
 # pip install precious-nlp
 
 # For development installation
-import sys
-sys.path.append('/path/to/precious')
+# git clone https://github.com/bimri/precious.git
+# cd precious
+# pip install -e .
 
-# Import with hyphenated package name
-import precious_nlp as precious
-from precious_nlp import PreciousModel, PreciousConfig
+# Import the package (install as 'precious-nlp', import as 'precious')
+import precious
+from precious import PreciousModel, PreciousConfig
 import torch
 
 # Check device availability
@@ -59,8 +60,8 @@ print(f"Output shape: {outputs['logits'].shape}")
 ```python
 import torch
 import torch.nn as nn
-import precious_nlp as precious
-from precious_nlp import PreciousModel, PreciousConfig
+import precious
+from precious import PreciousModel, PreciousConfig
 
 class PreciousClassifier(nn.Module):
     """Text classifier using Precious backbone"""

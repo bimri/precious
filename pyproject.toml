@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools-scm[toml]>=6.2"]
+requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "precious-nlp"
-version = "0.1.0"
+version = "0.1.1"
 description = "A tokenizer-free NLP library with T-FREE, CANINE, and byte-level approaches"
 readme = "README.md"
 license = { text = "MIT" }

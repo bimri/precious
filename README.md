@@ -32,13 +32,26 @@ pip install precious-nlp[docs]
 pip install precious-nlp[all]
 ```
 
+## Quick Start
+
+### Installation and Import
+```bash
+# Install the package
+pip install precious-nlp
+```
+
+```python
+# Import the package (note: install as 'precious-nlp', import as 'precious')
+import precious
+from precious import PreciousModel, PreciousConfig
+```
+
 ## Usage
 Here is a basic example of how to use the PreciousModel:
 
 ```python
-# Import with hyphenated package name
-import precious_nlp as precious
-from precious_nlp import PreciousModel, PreciousConfig
+import precious
+from precious import PreciousModel, PreciousConfig
 
 # Initialize the model with the desired configuration
 config = PreciousConfig(mode="byte", d_model=256)  # or "tfree", "canine"
@@ -63,7 +76,7 @@ print(f"Training loss: {loss.item()}")
 
 ### 1. Byte-Level Processing
 ```python
-import precious_nlp as precious
+import precious
 config = precious.PreciousConfig(mode="byte", d_model=256)
 model = precious.PreciousModel(config)
 # Processes text at byte level - universal and memory efficient
@@ -71,7 +84,7 @@ model = precious.PreciousModel(config)
 
 ### 2. CANINE Approach
 ```python
-import precious_nlp as precious
+import precious
 config = precious.PreciousConfig(mode="canine", d_model=256)
 model = precious.PreciousModel(config)
 # Character-level processing with Unicode support
@@ -79,7 +92,7 @@ model = precious.PreciousModel(config)
 
 ### 3. T-FREE Method
 ```python
-import precious_nlp as precious
+import precious
 config = precious.PreciousConfig(mode="tfree", d_model=256, tfree_vocab_v=8192)
 model = precious.PreciousModel(config)
 # Vocabulary-aware with character-level fallback

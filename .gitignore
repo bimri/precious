@@ -118,6 +118,9 @@ venv-*/
 publish-env/
 quick-publish/
 test-env/
+test-env-*/
+*-test-env/
+venv-publish/
 
 # Spyder project settings
 .spyderproject
